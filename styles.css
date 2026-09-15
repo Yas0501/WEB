@@ -204,3 +204,285 @@
     }
 
     a:focus{ outline:3px solid rgba(17,18,20,0.08); outline-offset:3px; }
+
+
+/* =====================================================
+   MOISES ESCALANTE - GIGNAC
+===================================================== */
+
+#moyses {
+    width: 100%;
+    max-width: 965px;
+    min-height: 590px;
+    margin: 0 auto 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fafafa;
+    border: 1.5px solid #171717;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   LADO IZQUIERDO
+===================================================== */
+
+#moyses .hero-left {
+    padding: 42px 40px 35px;
+
+    background: #fafafa;
+}
+
+
+#moyses .hero-title {
+    font-size: 58px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+
+#moyses .hero-sub {
+    max-width: 330px;
+    color: #6b6b6b;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 27px;
+}
+
+
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
+
+#moyses .detail-block {
+    padding-top: 15px;
+    border-top: 1px dashed #d6d6d6;
+}
+
+
+#moyses .detail-block p {
+    color: #6f6f6f;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+
+#moyses .detail-block ul {
+    padding-left: 35px;
+
+    margin-top: 10px;
+}
+
+
+#moyses .detail-block li {
+    color: #6f6f6f;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 7px;
+}
+
+
+#moyses .detail-block strong {
+    color: #555;
+}
+
+
+#moyses .frase-gignac {
+    margin-top: 22px;
+    padding-top: 15px;
+    border-top: 1px dashed #d5d5d5;
+    color: #777;
+    font-style: italic;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   LADO DERECHO - CARRUSEL
+===================================================== */
+
+#moyses .carousel {
+    position: relative;
+    min-height: 590px;
+    overflow: hidden;
+    background: #e9e9e9;
+}
+
+
+/* CONTENEDOR DE IMÁGENES */
+
+#moyses .carousel-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 590px;
+}
+
+
+/* TODAS LAS FOTOS */
+
+#moyses .carousel-slide {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transform: scale(1.04);
+    transition:
+        opacity 0.7s ease,
+        transform 1s ease;
+    /* Mantener las imágenes a color */
+    filter: none !important;
+}
+
+/* FOTO ACTIVA */
+#moyses .carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* =====================================================
+   FLECHAS
+===================================================== */
+
+#moyses .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: #111;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: 0.25s ease;
+}
+
+#moyses .carousel-btn:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* FLECHA IZQUIERDA */
+
+#moyses .prev {
+    left: 18px;
+}
+
+/* FLECHA DERECHA */
+
+#moyses .next {
+    right: 18px;
+}
+
+
+/* =====================================================
+   PUNTOS DEL CARRUSEL
+===================================================== */
+
+#moyses .carousel-dots {
+    position: absolute;
+
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(5px);
+    z-index: 20;
+}
+
+
+#moyses .dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #aaa;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+
+#moyses .dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #111;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+    #moyses {
+        grid-template-columns: 1fr;
+    }
+
+
+    #moyses .carousel,
+    #moyses .carousel-images {
+        min-height: 470px;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    #moyses .hero-left {
+        padding: 32px 25px;
+    }
+
+
+    #moyses .hero-title {
+        font-size: 43px;
+    }
+
+
+    #moyses .carousel,
+    #moyses .carousel-images {
+        min-height: 380px;
+    }
+
+
+    #moyses .carousel-btn {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
+    }
+
+
+    #moyses .detail-block ul {
+        padding-left: 25px;
+    }
+
+}
