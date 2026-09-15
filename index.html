@@ -294,5 +294,151 @@
       });
     })();
   </script>
+
+  <script>
+  /* =========================================
+     CARRUSEL DE GIGNAC - MOISES ESCALANTE
+  ========================================= */
+
+  const carousel = document.querySelector("#moyses .carousel");
+
+  if (carousel) {
+
+    const slides = carousel.querySelectorAll(".carousel-slide");
+    const dots = carousel.querySelectorAll(".dot");
+
+    const btnAnterior = carousel.querySelector(".prev");
+    const btnSiguiente = carousel.querySelector(".next");
+
+    let imagenActual = 0;
+    let intervalo;
+
+
+    /* Mostrar imagen */
+    function mostrarImagen(indice) {
+
+      // Si llega al final, vuelve a la primera
+      if (indice >= slides.length) {
+        indice = 0;
+      }
+
+      // Si va hacia atrás desde la primera,
+      // muestra la última
+      if (indice < 0) {
+        indice = slides.length - 1;
+      }
+
+      imagenActual = indice;
+
+
+      /* Quitar active de todas las imágenes */
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+
+
+      /* Quitar active de todos los puntos */
+      dots.forEach((dot) => {
+        dot.classList.remove("active");
+      });
+
+
+      /* Activar imagen actual */
+      slides[imagenActual].classList.add("active");
+
+
+      /* Activar punto actual */
+      dots[imagenActual].classList.add("active");
+    }
+
+
+    /* Imagen siguiente */
+    function siguienteImagen() {
+      mostrarImagen(imagenActual + 1);
+    }
+
+
+    /* Imagen anterior */
+    function anteriorImagen() {
+      mostrarImagen(imagenActual - 1);
+    }
+
+
+    /* Carrusel automático */
+    function iniciarCarrusel() {
+
+      intervalo = setInterval(() => {
+
+        siguienteImagen();
+
+      }, 4000);
+
+    }
+
+
+    /* Reiniciar tiempo automático */
+    function reiniciarCarrusel() {
+
+      clearInterval(intervalo);
+
+      iniciarCarrusel();
+
+    }
+
+
+    /* Botón derecha */
+    btnSiguiente.addEventListener("click", () => {
+
+      siguienteImagen();
+
+      reiniciarCarrusel();
+
+    });
+
+
+    /* Botón izquierda */
+    btnAnterior.addEventListener("click", () => {
+
+      anteriorImagen();
+
+      reiniciarCarrusel();
+
+    });
+
+
+    /* Puntos inferiores */
+    dots.forEach((dot, indice) => {
+
+      dot.addEventListener("click", () => {
+
+        mostrarImagen(indice);
+
+        reiniciarCarrusel();
+
+      });
+
+    });
+
+
+    /* Pausar cuando el mouse esté sobre la imagen */
+    carousel.addEventListener("mouseenter", () => {
+
+      clearInterval(intervalo);
+
+    });
+
+
+    /* Continuar cuando salga el mouse */
+    carousel.addEventListener("mouseleave", () => {
+      iniciarCarrusel();
+
+    });
+
+    /* Iniciar */
+    mostrarImagen(0);
+    iniciarCarrusel();
+
+  }
+</script>
 </body>
 </html>
