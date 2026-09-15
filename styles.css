@@ -116,7 +116,7 @@
 
     .note{ text-align:center; color:var(--muted); font-size:13px; margin-top:12px; }
 
-    /* Hero split (Yasser) con contenido integrado de "whales" */
+    /* Hero split (Yasser & Sofia) con contenido integrado */
     .hero-split{
       display:flex;
       background:transparent;
@@ -138,13 +138,13 @@
       gap:18px;
     }
 
-    /* Reducido para que no ocupe tanto */
+    /* Títulos reducidos para no ocupar tanto espacio */
     .hero-title{
       font-weight:900;
       color:var(--accent);
       line-height:0.95;
       letter-spacing:1px;
-      font-size:clamp(40px, 6.2vw, 64px); /* tamaño reducido respecto a antes */
+      font-size:clamp(20px, 6.2vw, 50px);
       text-transform:uppercase;
       margin:0;
       display:block;
@@ -157,7 +157,7 @@
       margin-top:8px;
     }
 
-    .whale-detail{
+    .detail-block{
       margin-top:8px;
       color:var(--muted);
       font-size:14px;
@@ -165,7 +165,7 @@
       border-top:1px dashed var(--border);
       padding-top:14px;
     }
-    .whale-detail ul{ margin:10px 0 0 20px; }
+    .detail-block ul{ margin:10px 0 0 20px; }
 
     .hero-right{
       width:50%;
@@ -179,7 +179,6 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      /* ajustar focus para que la ballena quede visible hacia la derecha */
       object-position: center right;
       display:block;
     }
