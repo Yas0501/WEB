@@ -1,530 +1,638 @@
-
 :root{
-  --sidebar-bg: #f5f5f6;
-  --page-bg: #ffffff;
-  --canvas-bg: #efefef;
-  --accent: #111214;
-  --muted: #6b6b6b;
-  --border: #e3e3e3;
-  --radius: 10px;
-  --shadow: 0 8px 30px rgba(17,18,20,0.06);
-  --sidebar-width: 300px;
+      --sidebar-bg: #f5f5f6;
+      --page-bg: #ffffff;
+      --canvas-bg: #efefef;
+      --accent: #111214;
+      --muted: #6b6b6b;
+      --border: #e3e3e3;
+      --radius: 10px;
+      --shadow: 0 8px 30px rgba(17,18,20,0.06);
+      --sidebar-width: 300px;
+      font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color-scheme: light;
+    }
 
-  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--canvas-bg);
+      color:var(--accent);
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Barra lateral fija, cubre toda la izquierda */
+    .sidebar{
+      position:fixed;
+      left:0;
+      top:0;
+      bottom:0;
+      width:var(--sidebar-width);
+      padding:28px 22px;
+      background:linear-gradient(180deg, var(--sidebar-bg), #fbfbfb);
+      border-right:1px solid var(--border);
+      box-shadow: 6px 0 30px rgba(17,18,20,0.03);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      overflow:auto;
+    }
+
+    .brand{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      /* logo eliminado: solo texto */
+    }
+    .title{ font-size:15px; font-weight:700; color:var(--accent); }
+    .subtitle{ font-size:13px; color:var(--muted); margin-top:2px; }
+
+    nav{
+      margin-top:6px;
+    }
+    nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    nav a{
+      display:block;
+      padding:12px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      color:var(--accent);
+      font-weight:700;
+      letter-spacing:0.4px;
+      transition: all .14s ease;
+      font-size:13.5px;
+    }
+    nav a:hover, nav a:focus{
+      background:rgba(17,18,20,0.04);
+      transform:translateX(4px);
+      outline:none;
+    }
+    nav a.active{
+      background:var(--accent);
+      color:white;
+      box-shadow:0 8px 20px rgba(17,18,20,0.06);
+    }
+
+    /* Contenedor principal - desplazado a la derecha para dejar espacio a la sidebar */
+    .main-wrap{
+      margin-left:var(--sidebar-width);
+      min-height:100vh;
+      padding:40px;
+      display:block;
+    }
+    header.card{
+      background:var(--page-bg);
+      border-radius:12px;
+      padding:18px 20px;
+      box-shadow:var(--shadow);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:22px;
+    }
+    header.card h1{ margin:0; font-size:18px; }
+    header.card p{ margin:0; color:var(--muted); font-size:13px; }
+
+    /* Estilo general de secciones */
+    section.info{
+      background:var(--page-bg);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      border:1px solid var(--border);
+    }
+    section h2{ margin:0 0 8px 0; font-size:16px; color:var(--accent); }
+    section p{ margin:0; color:var(--muted); font-size:14px; }
+
+    .note{ text-align:center; color:var(--muted); font-size:13px; margin-top:12px; }
+
+    /* Hero split (Yasser & Sofia) con contenido integrado */
+    .hero-split{
+      display:flex;
+      background:transparent;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      border:1px solid var(--border);
+    }
+
+    .hero-left{
+      width:50%;
+      min-height:360px;
+      background:#fafafa;
+      padding:40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+
+    /* Títulos reducidos para no ocupar tanto espacio */
+    .hero-title{
+      font-weight:900;
+      color:var(--accent);
+      line-height:0.95;
+      letter-spacing:1px;
+      font-size:clamp(20px, 6.2vw, 50px);
+      text-transform:uppercase;
+      margin:0;
+      display:block;
+    }
+
+    .hero-sub{
+      color:var(--muted);
+      max-width:68%;
+      font-size:15px;
+      margin-top:8px;
+    }
+
+    .detail-block{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      border-top:1px dashed var(--border);
+      padding-top:14px;
+    }
+    .detail-block ul{ margin:10px 0 0 20px; }
+
+    .hero-right{
+      width:50%;
+      min-height:360px;
+      background:#ddd;
+      position:relative;
+    }
+    .hero-right img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position: center right;
+      display:block;
+    }
+
+    @media (max-width:980px){
+      .main-wrap{ margin-left:0; padding:18px; }
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        border-right:none;
+        box-shadow:none;
+        display:flex;
+        flex-direction:row;
+        overflow:auto;
+        padding:14px;
+      }
+      .sidebar nav ul{ flex-direction:row; gap:8px; }
+      nav a{ white-space:nowrap; padding:10px 12px; }
+      .hero-split{ flex-direction:column; }
+      .hero-left, .hero-right{ width:100%; min-height:260px; padding:26px; }
+      .hero-sub{ max-width:100%; }
+    }
+
+    a:focus{ outline:3px solid rgba(17,18,20,0.08); outline-offset:3px; }
+
+
+/* =====================================================
+   MOYSES ESCALANTE - GIGNAC
+===================================================== */
+
+#moyses {
+    width: 100%;
+    max-width: 965px;
+    height: 620px;
+
+    margin: 0 auto 70px;
+
+    display: flex !important;
+
+    background: #fafafa;
+
+    border: 1.5px solid #171717;
+    border-radius: 13px;
+
+    overflow: hidden;
 }
 
 
-/* REGLAS GENERALES */
+/* =====================================================
+   LADO IZQUIERDO
+===================================================== */
 
-*{
-  box-sizing:border-box;
-}
+#moyses .hero-left {
+    width: 50% !important;
+    height: 100%;
 
-html{
-  scroll-behavior:smooth;
-}
+    flex: 0 0 50%;
 
-body{
-  margin:0;
-  background:var(--canvas-bg);
-  color:var(--accent);
-  line-height:1.45;
-  -webkit-font-smoothing:antialiased;
-}
+    padding: 42px 40px;
 
+    background: #fafafa;
 
-/* BARRA LATERAL */
+    display: flex;
+    flex-direction: column;
 
-.sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:var(--sidebar-width);
+    justify-content: center;
 
-  padding:28px 22px;
-
-  background:linear-gradient(
-    180deg,
-    var(--sidebar-bg),
-    #fbfbfb
-  );
-
-  border-right:1px solid var(--border);
-
-  box-shadow:6px 0 30px rgba(17,18,20,0.03);
-
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-
-  overflow:auto;
+    overflow-y: auto;
 }
 
 
-.brand{
-  display:flex;
-  gap:8px;
-  align-items:center;
+/* TITULO */
+
+#moyses .hero-title {
+    margin: 0 0 25px 0;
+
+    font-size: 58px;
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    color: #111;
+
+    text-transform: uppercase;
 }
 
 
-.title{
-  font-size:15px;
-  font-weight:700;
-  color:var(--accent);
+/* SUBTITULO */
+
+#moyses .hero-sub {
+    width: 100%;
+    max-width: 330px;
+
+    margin: 0 0 27px 0;
+
+    color: #6b6b6b;
+
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 
-.subtitle{
-  font-size:13px;
-  color:var(--muted);
-  margin-top:2px;
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
+
+#moyses .detail-block {
+    width: 100%;
+
+    padding-top: 15px;
+
+    border-top: 1px dashed #d6d6d6;
 }
 
 
-/* NAVEGACIÓN */
+#moyses .detail-block p {
+    margin: 0 0 14px 0;
 
-nav{
-  margin-top:6px;
-}
+    color: #6f6f6f;
 
-nav ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-nav a{
-  display:block;
-
-  padding:12px 14px;
-
-  border-radius:10px;
-
-  text-decoration:none;
-
-  color:var(--accent);
-
-  font-weight:700;
-
-  letter-spacing:0.4px;
-
-  transition:all .14s ease;
-
-  font-size:13.5px;
-}
-
-nav a:hover,
-nav a:focus{
-  background:rgba(17,18,20,0.04);
-
-  transform:translateX(4px);
-
-  outline:none;
-}
-
-nav a.active{
-  background:var(--accent);
-
-  color:white;
-
-  box-shadow:0 8px 20px rgba(17,18,20,0.06);
+    font-size: 14px;
+    line-height: 1.55;
 }
 
 
-/* CONTENEDOR PRINCIPAL */
+#moyses .detail-block ul {
+    margin: 8px 0 0 0;
 
-.main-wrap{
-  margin-left:var(--sidebar-width);
-
-  min-height:100vh;
-
-  padding:40px;
-
-  display:block;
+    padding-left: 25px;
 }
 
 
-/* TARJETA DE ENCABEZADO */
+#moyses .detail-block li {
+    margin-bottom: 7px;
 
-header.card{
-  background:var(--page-bg);
+    color: #6f6f6f;
 
-  border-radius:12px;
-
-  padding:18px 20px;
-
-  box-shadow:var(--shadow);
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:16px;
-
-  margin-bottom:22px;
-}
-
-header.card h1{
-  margin:0;
-  font-size:18px;
-}
-
-header.card p{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
+    font-size: 14px;
+    line-height: 1.45;
 }
 
 
-/* SECCIONES NORMALES */
-
-section.info{
-  background:var(--page-bg);
-
-  border-radius:12px;
-
-  padding:18px;
-
-  box-shadow:var(--shadow);
-
-  margin-bottom:18px;
-
-  border:1px solid var(--border);
-}
-
-section h2{
-  margin:0 0 8px 0;
-
-  font-size:16px;
-
-  color:var(--accent);
-}
-
-section p{
-  margin:0;
-
-  color:var(--muted);
-
-  font-size:14px;
+#moyses .detail-block strong {
+    color: #555;
 }
 
 
-/* NOTA FINAL */
+/* FRASE */
 
-.note{
-  text-align:center;
+#moyses .frase-gignac {
+    margin-top: 18px !important;
 
-  color:var(--muted);
+    padding-top: 14px;
 
-  font-size:13px;
+    border-top: 1px dashed #d5d5d5;
 
-  margin-top:12px;
+    color: #777;
+
+    font-size: 13px !important;
+
+    font-style: italic;
 }
 
 
-/* HERO SPLIT - YASSER Y SOFIA */
+/* =====================================================
+   LADO DERECHO
+===================================================== */
 
-.hero-split{
-  display:flex;
+#moyses .hero-right {
+    width: 50% !important;
+    height: 100%;
 
-  background:transparent;
+    flex: 0 0 50%;
 
-  border-radius:12px;
+    min-height: 0;
 
-  overflow:hidden;
+    padding: 0;
 
-  box-shadow:var(--shadow);
+    position: relative;
 
-  margin-bottom:18px;
+    overflow: hidden;
 
-  border:1px solid var(--border);
+    background: #111;
 }
 
 
-.hero-left{
-  width:50%;
+/* =====================================================
+   CARRUSEL
+===================================================== */
 
-  min-height:360px;
+#moyses .carousel {
+    width: 50% !important;
+    height: 100%;
 
-  background:#fafafa;
+    flex: 0 0 50%;
 
-  padding:40px;
+    position: relative;
 
-  display:flex;
+    overflow: hidden;
 
-  flex-direction:column;
-
-  justify-content:center;
-
-  gap:18px;
+    background: #111;
 }
 
 
-/* TITULOS */
+/* CONTENEDOR DE FOTOS */
 
-.hero-title{
-  font-weight:900;
+#moyses .carousel-images {
+    position: absolute;
 
-  color:var(--accent);
+    top: 0;
+    left: 0;
 
-  line-height:0.95;
+    width: 100%;
+    height: 100%;
 
-  letter-spacing:1px;
-
-  font-size:clamp(20px, 6.2vw, 50px);
-
-  text-transform:uppercase;
-
-  margin:0;
-
-  display:block;
+    overflow: hidden;
 }
 
 
-.hero-sub{
-  color:var(--muted);
+/* FOTOS */
 
-  max-width:68%;
+#moyses .carousel-slide {
+    position: absolute !important;
 
-  font-size:15px;
+    top: 0;
+    left: 0;
 
-  margin-top:8px;
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    /*
+       Cambia esto si quieres mover
+       el encuadre de la persona.
+    */
+    object-position: center top !important;
+
+    opacity: 0;
+
+    transform: scale(1.02);
+
+    transition:
+        opacity 0.7s ease,
+        transform 1s ease;
+
+    filter: none !important;
+
+    z-index: 1;
 }
 
 
-/* CONTENIDO */
+/* IMAGEN ACTIVA */
 
-.detail-block{
-  margin-top:8px;
+#moyses .carousel-slide.active {
+    opacity: 1;
 
-  color:var(--muted);
+    transform: scale(1);
 
-  font-size:14px;
-
-  line-height:1.5;
-
-  border-top:1px dashed var(--border);
-
-  padding-top:14px;
-}
-
-.detail-block ul{
-  margin:10px 0 0 20px;
-}
-
-.detail-note{
-  margin-top:10px !important;
-
-  color:var(--muted);
+    z-index: 2;
 }
 
 
-/* IMAGEN DERECHA */
+/* =====================================================
+   FLECHAS
+===================================================== */
 
-.hero-right{
-  width:50%;
+#moyses .carousel-btn {
+    position: absolute;
 
-  min-height:360px;
+    top: 50%;
 
-  background:#ddd;
+    transform: translateY(-50%);
 
-  position:relative;
-}
+    width: 42px;
+    height: 42px;
 
-.hero-right img{
-  position:absolute;
+    padding: 0;
 
-  inset:0;
+    border: none;
+    border-radius: 50%;
 
-  width:100%;
+    background: rgba(255, 255, 255, 0.9);
 
-  height:100%;
+    color: #111;
 
-  object-fit:cover;
+    font-size: 18px;
+    font-weight: bold;
 
-  object-position:center right;
+    cursor: pointer;
 
-  display:block;
-}
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
-/* ================================================= */
-/* ESTILOS PROPIOS DE YAHIR ACOSTA - FORTNITE */
-/* ================================================= */
+    z-index: 20;
 
-
-/* Contenedor principal de Yahir */
-
-.yahir-acosta{
-  background:transparent;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  margin-bottom:18px;
-  border:1px solid var(--border);
+    transition: 0.25s;
 }
 
 
-/* Lado izquierdo de Yahir */
+#moyses .carousel-btn:hover {
+    background: #111;
 
-.yahir-acosta-left{
-  width:50%;
-  min-height:360px;
-  background:#fafafa;
-  padding:40px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:18px;
+    color: #fff;
 }
 
 
-/* Título Yahir Acosta */
-
-.yahir-acosta-title{
-  font-weight:900;
-  color:var(--accent);
-  line-height:0.95;
-  letter-spacing:1px;
-  font-size:clamp(20px, 6.2vw, 50px);
-  text-transform:uppercase;
-  margin:0;
-  display:block;
+#moyses .prev {
+    left: 18px;
 }
 
 
-/* Subtítulo Fortnite */
-
-.yahir-acosta-sub{
-  color:var(--muted);
-  max-width:68%;
-  font-size:15px;
-  margin-top:8px;
+#moyses .next {
+    right: 18px;
 }
 
 
-/* Información de Fortnite */
-.yahir-acosta-detail{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.5;
-  border-top:1px dashed var(--border);
-  padding-top:14px;
+/* =====================================================
+   PUNTOS
+===================================================== */
+
+#moyses .carousel-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 11px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    z-index: 20;
 }
 
 
-/* Lista de características */
-.yahir-acosta-detail ul{
-  margin:10px 0 0 20px;
-}
+#moyses .dot {
+    width: 8px;
+    height: 8px;
 
-/* Texto final de Fortnite */
-.yahir-acosta-detail .detail-note{
-  margin-top:15px !important;
-  color:var(--muted);
-}
+    padding: 0;
 
+    border: none;
+    border-radius: 50%;
 
-/* Imagen de Fortnite */
+    background: #aaa;
 
-.yahir-acosta-right{
-  width:50%;
-  min-height:360px;
-  background:#ddd;
-  position:relative;
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
 
-.yahir-acosta-right img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
+#moyses .dot.active {
+    width: 22px;
+
+    border-radius: 10px;
+
+    background: #111;
 }
 
 
-/* ================================================= */
-/* RESPONSIVE PARA TABLETS Y CELULARES */
-/* ================================================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
-@media (max-width:980px){
+@media (max-width: 950px) {
 
-  .main-wrap{
-    margin-left:0;
-    padding:18px;
-  }
+    #moyses {
+        height: auto;
 
-  .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
-    border-right:none;
-    box-shadow:none;
-    display:flex;
-    flex-direction:row;
-    overflow:auto;
-    padding:14px;
-  }
-  .sidebar nav ul{
-    flex-direction:row;
-    gap:8px;
-  }
-
-  nav a{
-    white-space:nowrap;
-    padding:10px 12px;
-  }
-
-  /* Hero general *
-  .hero-split{
-    flex-direction:column;
-  }
-  .hero-left,
-  .hero-right{
-    width:100%;
-    min-height:260px;
-    padding:26px;
-  }
-  .hero-sub{
-    max-width:100%;
-  }
+        flex-direction: column;
+    }
 
 
-  /* Hero de Yahir */
-  .yahir-acosta{
-    flex-direction:column;
-  }
-  .yahir-acosta-left{
-    width:100%;
-    min-height:260px;
-    padding:26px;
-  }
-  .yahir-acosta-right{
-    width:100%;
-    min-height:260px;
-  }
-  .yahir-acosta-sub{
-    max-width:100%;
-  }
+    #moyses .hero-left {
+        width: 100% !important;
+
+        flex: none;
+
+        height: auto;
+
+        padding: 35px;
+    }
+
+
+    #moyses .hero-right,
+    #moyses .carousel {
+        width: 100% !important;
+
+        flex: none;
+
+        height: 520px;
+    }
+
 }
 
-/* ACCESIBILIDAD */
 
-a:focus{
-  outline:3px solid rgba(17,18,20,0.08);
+/* =====================================================
+   CELULAR
+===================================================== */
 
-  outline-offset:3px;
+@media (max-width: 600px) {
+
+    #moyses {
+        margin-bottom: 35px;
+    }
+
+
+    #moyses .hero-left {
+        padding: 30px 25px;
+    }
+
+
+    #moyses .hero-title {
+        font-size: 42px;
+    }
+
+
+    #moyses .hero-right,
+    #moyses .carousel {
+        height: 430px;
+    }
+
+
+    #moyses .carousel-btn {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
+    }
+
+
+    #moyses .prev {
+        left: 12px;
+    }
+
+
+    #moyses .next {
+        right: 12px;
+    }
+
 }
