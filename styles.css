@@ -207,83 +207,122 @@
 
 
 /* =====================================================
-   MOISES ESCALANTE - GIGNAC
+   MOYSES ESCALANTE - GIGNAC
 ===================================================== */
 
 #moyses {
     width: 100%;
     max-width: 965px;
     min-height: 590px;
+
     margin: 0 auto 70px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     background: #fafafa;
+
     border: 1.5px solid #171717;
     border-radius: 13px;
+
     overflow: hidden;
 }
 
 
 /* =====================================================
-   LADO IZQUIERDO
+   PARTE IZQUIERDA
 ===================================================== */
 
 #moyses .hero-left {
+    width: 100%;
+
+    min-height: 590px;
+
     padding: 42px 40px 35px;
 
     background: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
 }
 
+
+/* TITULO */
 
 #moyses .hero-title {
-    font-size: 58px;
+    margin: 0 0 25px 0;
+
+    font-size: clamp(45px, 5vw, 58px);
+
     line-height: 0.95;
+
     font-weight: 900;
+
     letter-spacing: 1px;
-    margin-bottom: 25px;
+
     color: #111;
+
+    text-transform: uppercase;
 }
 
 
+/* SUBTITULO */
+
 #moyses .hero-sub {
+    width: 100%;
     max-width: 330px;
+
+    margin: 0 0 27px 0;
+
     color: #6b6b6b;
+
     font-size: 14px;
+
     line-height: 1.5;
-    margin-bottom: 27px;
 }
 
 
 /* =====================================================
-   INFORMACIÓN
+   TEXTO
 ===================================================== */
 
 #moyses .detail-block {
+    width: 100%;
+
     padding-top: 15px;
+
     border-top: 1px dashed #d6d6d6;
 }
 
 
 #moyses .detail-block p {
+    margin: 0 0 15px 0;
+
     color: #6f6f6f;
+
     font-size: 14px;
+
     line-height: 1.6;
-    margin-bottom: 15px;
 }
 
 
 #moyses .detail-block ul {
-    padding-left: 35px;
+    margin: 10px 0 0 0;
 
-    margin-top: 10px;
+    padding-left: 25px;
 }
 
 
 #moyses .detail-block li {
+    margin-bottom: 8px;
+
     color: #6f6f6f;
+
     font-size: 14px;
+
     line-height: 1.5;
-    margin-bottom: 7px;
 }
 
 
@@ -293,61 +332,107 @@
 
 
 #moyses .frase-gignac {
-    margin-top: 22px;
+    margin-top: 20px;
+
     padding-top: 15px;
+
     border-top: 1px dashed #d5d5d5;
+
     color: #777;
-    font-style: italic;
+
     font-size: 13px;
+
+    font-style: italic;
 }
 
 
 /* =====================================================
-   LADO DERECHO - CARRUSEL
+   PARTE DERECHA
+===================================================== */
+
+#moyses .hero-right {
+    width: 100%;
+
+    min-height: 590px;
+
+    padding: 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+/* =====================================================
+   CARRUSEL
 ===================================================== */
 
 #moyses .carousel {
-    position: relative;
+    width: 100%;
+
     min-height: 590px;
+
+    position: relative;
+
     overflow: hidden;
-    background: #e9e9e9;
+
+    background: #111;
 }
 
 
-/* CONTENEDOR DE IMÁGENES */
+/* CONTENEDOR DE FOTOS */
 
 #moyses .carousel-images {
-    position: relative;
     width: 100%;
     height: 100%;
+
     min-height: 590px;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
 
-/* TODAS LAS FOTOS */
+/* TODAS LAS IMAGENES */
 
 #moyses .carousel-slide {
     position: absolute;
 
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
+    /* Muestra la foto completa */
+    object-fit: contain;
+
     object-position: center;
+
+    background: #111;
+
     opacity: 0;
-    transform: scale(1.04);
-    transition:
-        opacity 0.7s ease,
-        transform 1s ease;
-    /* Mantener las imágenes a color */
+
+    transform: scale(1);
+
+    transition: opacity 0.7s ease;
+
+    /* FOTOS A COLOR */
     filter: none !important;
+
+    z-index: 1;
 }
 
-/* FOTO ACTIVA */
+
+/* IMAGEN ACTIVA */
+
 #moyses .carousel-slide.active {
     opacity: 1;
-    transform: scale(1);
+
+    z-index: 2;
 }
 
 
@@ -357,37 +442,52 @@
 
 #moyses .carousel-btn {
     position: absolute;
+
     top: 50%;
+
     transform: translateY(-50%);
+
     width: 42px;
     height: 42px;
+
+    padding: 0;
+
     border: none;
     border-radius: 50%;
+
     background: rgba(255, 255, 255, 0.88);
+
     color: #111;
+
     font-size: 18px;
+    font-weight: bold;
+
     cursor: pointer;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    z-index: 20;
+
+    z-index: 10;
+
     transition: 0.25s ease;
 }
 
+
 #moyses .carousel-btn:hover {
     background: #111;
+
     color: #fff;
 }
 
-/* FLECHA IZQUIERDA */
 
-#moyses .prev {
+#moyses .carousel-btn.prev {
     left: 18px;
 }
 
-/* FLECHA DERECHA */
 
-#moyses .next {
+#moyses .carousel-btn.next {
     right: 18px;
 }
 
@@ -399,35 +499,50 @@
 #moyses .carousel-dots {
     position: absolute;
 
-    bottom: 22px;
     left: 50%;
+    bottom: 20px;
+
     transform: translateX(-50%);
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
     padding: 8px 11px;
+
     border-radius: 20px;
+
     background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(5px);
-    z-index: 20;
+
+    z-index: 10;
 }
 
 
 #moyses .dot {
     width: 8px;
     height: 8px;
+
     padding: 0;
+
     border: none;
+
     border-radius: 50%;
+
     background: #aaa;
+
     cursor: pointer;
+
     transition: 0.3s ease;
 }
 
 
 #moyses .dot.active {
     width: 22px;
+
     border-radius: 10px;
+
     background: #111;
 }
 
@@ -443,9 +558,21 @@
     }
 
 
+    #moyses .hero-left {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 35px;
+    }
+
+
+    #moyses .hero-right,
     #moyses .carousel,
     #moyses .carousel-images {
-        min-height: 470px;
+        width: 100%;
+
+        min-height: 500px;
     }
 
 }
@@ -457,19 +584,30 @@
 
 @media (max-width: 600px) {
 
+    #moyses {
+        margin-bottom: 35px;
+    }
+
+
     #moyses .hero-left {
-        padding: 32px 25px;
+        padding: 30px 25px;
     }
 
 
     #moyses .hero-title {
-        font-size: 43px;
+        font-size: 42px;
     }
 
 
+    #moyses .hero-sub {
+        max-width: 100%;
+    }
+
+
+    #moyses .hero-right,
     #moyses .carousel,
     #moyses .carousel-images {
-        min-height: 380px;
+        min-height: 400px;
     }
 
 
@@ -481,8 +619,13 @@
     }
 
 
-    #moyses .detail-block ul {
-        padding-left: 25px;
+    #moyses .carousel-btn.prev {
+        left: 12px;
+    }
+
+
+    #moyses .carousel-btn.next {
+        right: 12px;
     }
 
 }
