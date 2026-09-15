@@ -207,19 +207,23 @@
 
 
 /* =====================================================
-   MOISES ESCALANTE - GIGNAC
+   MOYSES ESCALANTE - GIGNAC
 ===================================================== */
 
 #moyses {
     width: 100%;
     max-width: 965px;
-    min-height: 590px;
+    height: 620px;
+
     margin: 0 auto 70px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    display: flex !important;
+
     background: #fafafa;
+
     border: 1.5px solid #171717;
     border-radius: 13px;
+
     overflow: hidden;
 }
 
@@ -229,28 +233,54 @@
 ===================================================== */
 
 #moyses .hero-left {
-    padding: 42px 40px 35px;
+    width: 50% !important;
+    height: 100%;
+
+    flex: 0 0 50%;
+
+    padding: 42px 40px;
 
     background: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    overflow-y: auto;
 }
 
+
+/* TITULO */
 
 #moyses .hero-title {
+    margin: 0 0 25px 0;
+
     font-size: 58px;
     line-height: 0.95;
+
     font-weight: 900;
+
     letter-spacing: 1px;
-    margin-bottom: 25px;
+
     color: #111;
+
+    text-transform: uppercase;
 }
 
 
+/* SUBTITULO */
+
 #moyses .hero-sub {
+    width: 100%;
     max-width: 330px;
+
+    margin: 0 0 27px 0;
+
     color: #6b6b6b;
+
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 27px;
 }
 
 
@@ -259,31 +289,38 @@
 ===================================================== */
 
 #moyses .detail-block {
+    width: 100%;
+
     padding-top: 15px;
+
     border-top: 1px dashed #d6d6d6;
 }
 
 
 #moyses .detail-block p {
+    margin: 0 0 14px 0;
+
     color: #6f6f6f;
+
     font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.55;
 }
 
 
 #moyses .detail-block ul {
-    padding-left: 35px;
+    margin: 8px 0 0 0;
 
-    margin-top: 10px;
+    padding-left: 25px;
 }
 
 
 #moyses .detail-block li {
-    color: #6f6f6f;
-    font-size: 14px;
-    line-height: 1.5;
     margin-bottom: 7px;
+
+    color: #6f6f6f;
+
+    font-size: 14px;
+    line-height: 1.45;
 }
 
 
@@ -292,62 +329,119 @@
 }
 
 
+/* FRASE */
+
 #moyses .frase-gignac {
-    margin-top: 22px;
-    padding-top: 15px;
+    margin-top: 18px !important;
+
+    padding-top: 14px;
+
     border-top: 1px dashed #d5d5d5;
+
     color: #777;
+
+    font-size: 13px !important;
+
     font-style: italic;
-    font-size: 13px;
 }
 
 
 /* =====================================================
-   LADO DERECHO - CARRUSEL
+   LADO DERECHO
+===================================================== */
+
+#moyses .hero-right {
+    width: 50% !important;
+    height: 100%;
+
+    flex: 0 0 50%;
+
+    min-height: 0;
+
+    padding: 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+/* =====================================================
+   CARRUSEL
 ===================================================== */
 
 #moyses .carousel {
+    width: 50% !important;
+    height: 100%;
+
+    flex: 0 0 50%;
+
     position: relative;
-    min-height: 590px;
+
     overflow: hidden;
-    background: #e9e9e9;
+
+    background: #111;
 }
 
 
-/* CONTENEDOR DE IMÁGENES */
+/* CONTENEDOR DE FOTOS */
 
 #moyses .carousel-images {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 590px;
-}
-
-
-/* TODAS LAS FOTOS */
-
-#moyses .carousel-slide {
     position: absolute;
 
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+
+    overflow: hidden;
+}
+
+
+/* FOTOS */
+
+#moyses .carousel-slide {
+    position: absolute !important;
+
+    top: 0;
+    left: 0;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    /*
+       Cambia esto si quieres mover
+       el encuadre de la persona.
+    */
+    object-position: center top !important;
+
     opacity: 0;
-    transform: scale(1.04);
+
+    transform: scale(1.02);
+
     transition:
         opacity 0.7s ease,
         transform 1s ease;
-    /* Mantener las imágenes a color */
+
     filter: none !important;
+
+    z-index: 1;
 }
 
-/* FOTO ACTIVA */
+
+/* IMAGEN ACTIVA */
+
 #moyses .carousel-slide.active {
     opacity: 1;
+
     transform: scale(1);
+
+    z-index: 2;
 }
 
 
@@ -357,35 +451,50 @@
 
 #moyses .carousel-btn {
     position: absolute;
+
     top: 50%;
+
     transform: translateY(-50%);
+
     width: 42px;
     height: 42px;
+
+    padding: 0;
+
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.88);
+
+    background: rgba(255, 255, 255, 0.9);
+
     color: #111;
+
     font-size: 18px;
+    font-weight: bold;
+
     cursor: pointer;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     z-index: 20;
-    transition: 0.25s ease;
+
+    transition: 0.25s;
 }
+
 
 #moyses .carousel-btn:hover {
     background: #111;
+
     color: #fff;
 }
 
-/* FLECHA IZQUIERDA */
 
 #moyses .prev {
     left: 18px;
 }
 
-/* FLECHA DERECHA */
 
 #moyses .next {
     right: 18px;
@@ -393,22 +502,29 @@
 
 
 /* =====================================================
-   PUNTOS DEL CARRUSEL
+   PUNTOS
 ===================================================== */
 
 #moyses .carousel-dots {
     position: absolute;
 
-    bottom: 22px;
     left: 50%;
+    bottom: 20px;
+
     transform: translateX(-50%);
+
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
     padding: 8px 11px;
+
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(5px);
+
+    background: rgba(255, 255, 255, 0.85);
+
     z-index: 20;
 }
 
@@ -416,18 +532,25 @@
 #moyses .dot {
     width: 8px;
     height: 8px;
+
     padding: 0;
+
     border: none;
     border-radius: 50%;
+
     background: #aaa;
+
     cursor: pointer;
-    transition: 0.3s ease;
+
+    transition: 0.3s;
 }
 
 
 #moyses .dot.active {
     width: 22px;
+
     border-radius: 10px;
+
     background: #111;
 }
 
@@ -439,13 +562,30 @@
 @media (max-width: 950px) {
 
     #moyses {
-        grid-template-columns: 1fr;
+        height: auto;
+
+        flex-direction: column;
     }
 
 
-    #moyses .carousel,
-    #moyses .carousel-images {
-        min-height: 470px;
+    #moyses .hero-left {
+        width: 100% !important;
+
+        flex: none;
+
+        height: auto;
+
+        padding: 35px;
+    }
+
+
+    #moyses .hero-right,
+    #moyses .carousel {
+        width: 100% !important;
+
+        flex: none;
+
+        height: 520px;
     }
 
 }
@@ -457,19 +597,24 @@
 
 @media (max-width: 600px) {
 
+    #moyses {
+        margin-bottom: 35px;
+    }
+
+
     #moyses .hero-left {
-        padding: 32px 25px;
+        padding: 30px 25px;
     }
 
 
     #moyses .hero-title {
-        font-size: 43px;
+        font-size: 42px;
     }
 
 
-    #moyses .carousel,
-    #moyses .carousel-images {
-        min-height: 380px;
+    #moyses .hero-right,
+    #moyses .carousel {
+        height: 430px;
     }
 
 
@@ -481,8 +626,13 @@
     }
 
 
-    #moyses .detail-block ul {
-        padding-left: 25px;
+    #moyses .prev {
+        left: 12px;
+    }
+
+
+    #moyses .next {
+        right: 12px;
     }
 
 }
